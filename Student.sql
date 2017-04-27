@@ -108,3 +108,76 @@ set @s4=78
 select @s1 + @s2 + @s3 + @s4
 ------------------------------------
 select sum (25+556)*/
+-------------------------------------------------
+CREATE DATABASE Student
+------------------------------------------------------
+create table Student(Stu_Id int NOT NULL PRIMARY KEY,LastName varchar(255) NOT NULL,FirstName varchar(255),Address varchar(255),City varchar(255))
+---------------------------------------------------------------------------------
+select * from Student
+---------------------------------------------------------
+insert into Student values('100','karki','Amit', 'Ranikhet','Almora')
+insert into Student values('101','Kumar','Sumit','Uchapul','Haldwani')
+insert into Student values('102','Bisht','Surander','Block','Haldwani')
+insert into Student values('103','Rawat','Deepak','Lamachur','Haldwani')
+insert into Student values('104','karki','DewanSingh','Ratighat','Nanital')
+insert into Student values('105','Bisht','vinni','Pilikhoti','Haldwani')
+insert into Student values('106','Bisht','Vinaay','Laldath','Haldwani')
+select * from Student
+insert into student values ('107','Pandey','Utra','Pilikhoti','Nanital')
+insert into Student values('108','Metha','Ravi','Pilikhoti','Haldwani')
+insert into Student values('109','Ratula','Ruchi','Mukhani','Nanital')
+insert into Student values('110','Rawat','Deepak','Ramnager','Nanital')
+---------------------------------------------------------------------------------------------------------------------
+create table Student(Stu_Id int NOT NULL PRIMARY KEY,LastName varchar(255) NOT NULL,FirstName varchar(255),Address varchar(255),City varchar(255))
+create table class(Class_Id int not null primary key,Class_Name int not null,Stu_Id int Foreign key references Student(Stu_Id))
+----------------------------------------------------------------------------------------------
+alter table class add Cource_Name varchar(80)
+alter table class drop column Class_Strenth
+alter table class drop column Class_Name
+----------------------------------------------------------------
+insert into class values('500','1','100')
+update class set Cource_Name='B.com'
+insert into class values('501','101','Bca')
+select * from class
+select * from Student
+alter table Student add Age int
+update Student set Age='20',FirstName='Amit' where Stu_Id='100'
+update Student set Age='25',FirstName='Sumit' where Stu_Id='101'
+update Student set Age='22',FirstName='SUrander' where Stu_Id='102'
+update Student set Age='20',FirstName='Deepak' where Stu_Id='103'
+update Student set Age='26',FirstName='DewanSing' where Stu_Id='104'
+update Student set Age='24',FirstName='vinni' where Stu_Id='105'
+update Student set Age='20',FirstName='Vinay' where Stu_Id='106'
+update Student set Age='19',FirstName='Utra' where Stu_Id='107'
+update Student set Age='22',FirstName='Ravi' where Stu_Id='108'
+update Student set Age='25',FirstName='Ruchi' where Stu_Id='109'
+update Student set Age='25',FirstName='Deepak' where Stu_Id='110'
+--------------------------------------------------------------------------------------------------
+alter table Student drop column Age
+--------------------------------------------------------------------------------------
+insert into class values('502','102','Mca')
+insert into class values('503','103','Mba')
+insert into class values('504','104','Bca')
+insert into class values('505','105','Mba')
+insert into class values('506','106','B.tech')
+insert into class values('507','107','Mca')
+insert into class values('508','108','Bba')
+insert into class values('509','109','Bca')
+insert into class values('510','110','B.com')
+insert into class values('510','111','B.com')
+-------------------------------------------------------------------------------------------
+select * from class
+select * from Student
+----------------------------------------------------------
+select Student.FirstName,Student.LastName,class.Cource_Name from Student inner join class on Student.Stu_Id=Class.Stu_Id 
+select Student.FirstName,class.Cource_Name,Student.LastName from Student,class where Student.Stu_Id=class.Stu_Id
+select Student.FirstName,Student.LastName,class.Cource_Name from Student,class where Student.Stu_Id=class.Stu_Id
+-------------------------------------------------------------------
+select *from Student where Age between 22 and 25
+select *from Student where Stu_Id between 102 and 105
+select *from Student where City like 'H%' 
+select * from Student where city like 'N%'
+/*select Student.FirstName,class.Class_Id from class left join Student on Student.Stu_Id=Class_Id order by class.Cource_Name*/
+CREATE DATABASE StudentRegistation
+/*create table Student(Stu_Id int NOT NULL PRIMARY KEY,LastName varchar(255) NOT NULL,FirstName varchar(255),Address varchar(255),City varchar(255))*/
+create table User(UserId int NOt NULL Primary key,Password)
