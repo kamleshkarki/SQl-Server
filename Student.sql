@@ -181,3 +181,6 @@ select * from Student where city like 'N%'
 CREATE DATABASE StudentRegistation
 /*create table Student(Stu_Id int NOT NULL PRIMARY KEY,LastName varchar(255) NOT NULL,FirstName varchar(255),Address varchar(255),City varchar(255))*/
 create table User(UserId int NOt NULL Primary key,Password)
+/*create data base for employee*/
+CREATE DATABASE EmployeeRegistation
+---------------------------------------------------------------------------------------------------------------------
