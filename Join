@@ -4,9 +4,9 @@ use sample
 create table department(deptid int primary key,dname varchar(50),dhead varchar(50),dlocation varchar(50))
 -----------------------------------------------------------------------------------------------------------------------
 insert into department values(1,'IT','SURESH','PUNE'),(2,'HR','SAURAV','KOLKATTA'),(3,'PAYROLL','SACHIN','NEWYORK'),(4,'ACCOUNTS','AMIT','GERMANY'),(5,'OTHERS','JOHN','LONDON')
-
+----------------------------------------------------------------------------------------------------------------------------------------
 create table employee(eid int primary key,ename varchar(50),egender varchar(50),elocation varchar(50),esalary float,did int foreign key references department(deptid))
-
+---------------------------------------------------------------------------------------------------------------------------------------
 insert into employee values(1,'hari','m','hyderabad',5000,1),
 (2,'ravi','m','bangalore',5000,2),
 (3,'rakesh','m','chennai',6000,1),
