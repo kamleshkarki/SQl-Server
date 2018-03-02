@@ -1,5 +1,4 @@
 //create database
-use sample
 ------------------------------------------------------------------------------
 create table department(deptid int primary key,dname varchar(50),dhead varchar(50),dlocation varchar(50))
 -----------------------------------------------------------------------------------------------------------------------
