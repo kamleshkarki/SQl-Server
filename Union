@@ -1,0 +1,94 @@
+
+--Examples of Union, Except, Intersect
+
+USE Joins
+GO
+
+--CREATE NEW TABLE
+
+CREATE TABLE dbo.Buyer
+(BuyID int IDENTITY (1,1) NOT NULL PRIMARY KEY,--<<Primary Key
+BuyFname varchar (20) NULL,
+BuyLname varchar (20) NULL,
+Age char (3) NULL)
+ 
+--INSERT DATA
+
+INSERT INTO dbo.Buyer
+VALUES
+('BOB', 'SMITH','35'),
+('TOM', 'JONES','25'),
+('MIKE', 'COBAL','15'),
+('DREW', 'SHAFFER','75'),
+('HENRY', 'WILLIS','37'),
+('RAF', 'ASGHAR','35')--<< This row will exists in both tables for our demo
+
+Select * from dbo.Buyer
+ 
+--CREATE 2nd TABLE
+
+CREATE TABLE dbo.Supplier
+(SuppID int IDENTITY (1,1) NOT NULL PRIMARY KEY, --<<Primary Key
+SuppFname varchar (20) NULL,
+SuppLname varchar (20) NULL,
+Age char (3) NULL)
+ 
+--INSERT DATA
+
+INSERT INTO dbo.Supplier
+VALUES
+('Jack', 'Supplies','35'),
+('Mike', 'Supplies','25'),
+('Jessy', 'Supplies','15'),
+('DREW', 'Supplies','75'),
+('John', 'Supplies','37'),
+('Mary', 'Supplies','35'),
+('RAF', 'ASGHAR','35') --<<Duplicate value shared by both tables
+
+Select * from dbo.Supplier
+ 
+--USE OF UNION operator combines the result set from two or more tables.The UNION operator selects only distinct values by default
+
+SELECT [BuyFname],[BuyLname]
+FROM [dbo].[Buyer]
+UNION
+SELECT [SuppFname],[SuppLname]
+FROM [dbo].[Supplier]
+-- 12 Records
+
+--USE OF UNION with ALL. To allow duplicate values, use the ALL keyword with UNION
+
+
+SELECT [BuyFname],[BuyLname]
+FROM [dbo].[Buyer]
+UNION
+ALL --<< Using ALL Keyword to view duplicate records between the tables
+SELECT [SuppFname],[SuppLname]
+FROM [dbo].[Supplier]
+-- 13 Records (Raf Asghar is displayed twice because of ALL Keyword)
+
+--USE OF EXCEPT. Exclude data from two or more tables that exist in both tables
+
+SELECT [BuyFname],[BuyLname]
+FROM [dbo].[Buyer]
+EXCEPT
+SELECT [SuppFname],[SuppLname]
+FROM [dbo].[Supplier]
+--Note Raf Asghar is NOT included in the results as it exists in both tables
+
+--USE OF INTERSECT. Command includes data from two or more tables that exist in both tables
+
+SELECT [BuyFname],[BuyLname]
+FROM [dbo].[Buyer]
+INTERSECT
+SELECT [SuppFname],[SuppLname]
+FROM [dbo].[Supplier]
+--Note Raf Asghar IS included in the results as it exists in both tables
+ 
+--CLEANING UP
+
+DROP TABLE Supplier
+DROP TABLE Buyer
+
+
+
