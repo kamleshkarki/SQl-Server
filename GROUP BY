@@ -1,0 +1,71 @@
+
+/*
+
+The GROUP BY clause will collect all of the rows together that are specified in the select statement (columns)
+and will then allow aggregate functions to be performed on the one or more columns
+
+*/
+
+--EXAMPLES OF GROUP BY CLAUSE
+
+SELECT [SalesOrderID]
+      , [CarrierTrackingNumber]
+      , [OrderQty]
+      , [ProductID]
+      , [UnitPrice]
+      , [UnitPriceDiscount]
+      , [LineTotal]
+  FROM [AdventureWorks2012]. [Sales]. [SalesOrderDetail]--<<why did this query execute even though it states Joins DB? because I used the 'FQN'
+  --121317 rows
+  --Notice, we have many different SalesOrderID values
+
+  --Filter the query with a specific SalesOrderID
+
+  SELECT [SalesOrderID]
+      , [CarrierTrackingNumber]
+      , [OrderQty]
+      , [ProductID]
+      , [UnitPrice]
+      , [UnitPriceDiscount]
+      , [LineTotal]
+  FROM [AdventureWorks2012]. [Sales]. [SalesOrderDetail]
+  Where SalesOrderID = '43659'
+  --12 rows
+  --26 OrderQty
+
+--What was the total quantity ordered for this sales order?  Use the group by command to group the salesorderid and its Qty totals
+
+SELECT [SalesOrderID], SUM ([OrderQty]) AS 'Total Qty'
+FROM [AdventureWorks2012]. [Sales]. [SalesOrderDetail]
+Where SalesOrderID = '43659'
+GROUP BY [SalesOrderID]
+ORDER BY [SalesOrderID]
+
+--How many SalesOrders were there for this Order?  -- Use the Count function!
+
+SELECT [SalesOrderID], SUM ([OrderQty]) AS 'Total Qty', COUNT (SalesOrderID) as TotalOrders
+FROM [AdventureWorks2012]. [Sales]. [SalesOrderDetail]
+WHERE [SalesOrderID] IN (43659)
+GROUP BY [SalesOrderID]
+ORDER BY [SalesOrderID]
+
+--How many SalesOrders were there for every Order?  -- Use the Count function!
+
+SELECT [SalesOrderID], SUM ([OrderQty]) AS 'Total Qty', COUNT (*) as TotalOrders
+FROM [AdventureWorks2012]. [Sales]. [SalesOrderDetail]
+--WHERE [SalesOrderID] IN (43659, 43660, 43661, 43662)
+GROUP BY [SalesOrderID]
+ORDER BY [SalesOrderID]
+
+--Once the query has grouped by Total Qty and Total Orders, we want to ask the question; of the grouped totals, can we filter the group by statement.
+--Answer: Use the Having clause
+--Further filtering the GROUP BY clause by using the HAVING clause. 
+
+--Example of Having
+
+SELECT [SalesOrderID], SUM ([OrderQty]) AS 'Total Qty', COUNT (*) as TotalOrders
+FROM [AdventureWorks2012]. [Sales]. [SalesOrderDetail]
+--WHERE [SalesOrderID] IN (43659, 43660, 43661, 43662)
+GROUP BY [SalesOrderID]
+HAVING COUNT (*) > 25 --<< Having clause when executed, will filter the GROUP BY results based on this condition
+ORDER BY [SalesOrderID]
