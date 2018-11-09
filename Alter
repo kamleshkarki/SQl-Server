@@ -1,0 +1,90 @@
+--Create Sales db for testing
+
+USEmaster;
+GO
+
+CREATEDATABASESales--<Database Name
+ONPRIMARY--<File Group
+(NAME=Sales_dat,--<DB mdf Name
+FILENAME='C:\DataFiles\saledat.mdf',--<path of directory
+SIZE= 105MB,--<size of data file
+MAXSIZE= 500MB,--<max size file
+FILEGROWTH=5 )--< incremental growth
+LOGON
+(NAME=Sales_log,
+FILENAME='C:\DataFiles\salelog.ldf',
+SIZE= 5MB,
+MAXSIZE= 25MB,
+FILEGROWTH=5MB);
+GO
+
+USESALES
+GO
+
+--Create Table for testing
+
+CREATE TABLE Employee
+(EmpIDintIdentity (1,1)PrimaryKeyNotNull,--<primary key constraint
+Fnamevarchar(15)Null,
+Lnamevarchar(30)Null,
+AgetinyintNull,
+Addressvarchar(50)Null,
+Cityvarchar(20)Null,
+Statechar (2)Null);
+
+Select*FromEmployee
+
+--Exmaples of ALTER command:
+
+--USE ALTER TO ADD COLUMN 
+
+ALTERTABLEEmployee
+ADDDateOfBirthdate
+
+Select*FromEmployee
+
+--USE ALTER CHANGE DATA TYPE
+
+ALTERTABLEEmployee
+ALTERCOLUMNDateOfBirthvarchar(15)
+
+
+--USE ALTER CHANGE DATA TYPE TO NOT NULL VALUE
+
+ALTERTABLEEmployee
+ALTERCOLUMNDateOfBirthvarchar(15)NOTNULL
+
+--USE ALTER DROP COLUMN
+
+ALTERTABLEEmployee
+DROPCOLUMNDateOfBirth
+
+--USE ALTER TO ADD CONSTRAINT
+
+ALTERTABLEEmployee
+ADDCONSTRAINTck_Employee_AgeCHECK (Age>1 andAge<130);--<< cannot insert value less than 1 or greater than 130
+
+--Verify:
+
+SelectAgefromEmployee
+
+InsertIntoEmployee(Age)--<< as the age 30 is within the boundary of the check constraint, it will insert
+Values (30)
+
+InsertIntoEmployee(Age)--<< as the age 0 is out side the boundary of the check constraint, it will fail to insert
+Values (0)
+
+InsertIntoEmployee(Age)--<< as the age 131 is out side the boundary of the check constraint, it will fail to insert
+Values (131)
+
+--USE ALTER TO DROP CONSTRAINT
+
+ALTERTABLEEmployee
+DROPCONSTRAINTck_Employee_Age;
+
+USEmaster
+GO
+
+DROPDATABASESales
+
+https://technet.microsoft.com/en-us/library/cc879314%28v=sql.110%29.aspx
