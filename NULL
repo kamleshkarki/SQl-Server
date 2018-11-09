@@ -1,0 +1,43 @@
+
+/*
+
+NULL values permit entry of a blank data when the value at the time of entry is unknown.
+The following example illustrates the Null values of social security number is unknown by several employees.  
+This columns is updated by an update statement after the creation of a table
+
+*/
+
+USE Joins
+GO
+
+SELECT *
+FROM [Joins].[dbo].[Names]
+
+ALTER TABLE NAMES
+ADD Social_Security_Number CHAR (11)
+
+--Employee comes in later to update their SSN
+
+UPDATE Names
+SET Social_Security_Number  = ('65-255-2514')
+WHERE NameID = 2
+
+UPDATE Names
+SET Social_Security_Number  = ('34-255-5467')
+WHERE NameID = 5
+
+
+--Return all rows where there is a Null value in the Social_Security_Number column
+
+Select * from Names
+Where Social_Security_Number IS NULL
+
+--Return all rows where there is NOT a Null value in the Social_Security_Number column
+
+Select * from Names
+Where Social_Security_Number IS NOT NULL
+
+
+--Drop column
+
+ALTER TABLE NAMES DROP COLUMN Social_Security_Number;
