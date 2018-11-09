@@ -1,0 +1,63 @@
+INSERT INTO
+   Use AdventureWorks2012
+  Go
+
+  --Drop table names
+
+  --Create a table
+
+  Create Table Names
+  (Fname varchar (20),
+  Lname varchar (20),
+  State char (2),
+  City varchar (25),
+  Salary money
+  )
+
+Select * from Names
+
+--Using the table we created earlier, insert new records into table called Names
+
+Select * from Names
+
+--Using Syntax1, inserting a SINGLE record with all values into a table NOT using column titles
+
+Insert into Names 
+Values 
+('Henry','Jones','WA','Seattle', 3000)
+
+Select * from Names
+
+--Using Syntax1, inserting MULTIPLE records with all values into a table NOT using column titles, separated by commas
+
+Insert into Names 
+Values 
+('Scott','Warren','DC','District', 3466),
+('Lucy','Smarts','WI','Greenbay', 1566),
+('Danny','Ash','MO','Farnsworth', 2111)
+
+Select * from Names
+
+--Using Syntax2, inserting a SINGLE record with specified values into a table USING column titles
+
+Insert into Names ([Fname], [Lname], [State], [City], [Salary])--<< USE PARENTHESIS
+Values ('Ralph','Saunders','VA','Henson', 4188)
+
+Select * from Names
+
+--Insert an unknown value (Null) into columns using specified columns names
+
+Insert into Names (Fname, Lname, State, City, Salary)--<< USE PARENTHESIS
+Values ('Dennis', 'Wilkes', Null, Null, Null)
+
+Select * from Names
+
+--When inserting data into specified fields and omitting other data, by default a Null value will be placed
+
+Insert into Names (Fname, Lname)--<< USE PARENTHESIS
+Values ('Mandy', 'Booth')
+
+Select * from Names
+
+
+
