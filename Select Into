@@ -1,0 +1,81 @@
+--Using the Select Into command to copy partial or entire data from one table to another
+
+--Examples:
+
+--Copying all the columns into the newly created table:
+
+USE Joins
+GO
+
+Select * 
+Into  [Joins].[dbo].[Department_033015] --<< Name of newly created table with the suffix of today's date
+FROM [Joins].[dbo].[Department] --<< From the original table
+
+Select * from [Joins].[dbo].[Department_033015]
+
+--Copying partial data to another table using specific columns
+
+Select Department 
+Into  [Joins].[dbo].[Department_Partial_033015] --<< Name of newly created table with the suffix of today's date(only one column selected)
+FROM [Joins].[dbo].[Department] --<< From the original table
+
+Select * from [Joins].[dbo].[Department_Partial_033015]
+
+--Copying partial data to another table using specific columns and the WHERE clause
+
+Select * 
+Into  [Joins].[dbo].[Department_Partial_Where_033015] --<< Name of newly created table with the suffix of today's date(only one column selected)
+FROM [Joins].[dbo].[Department] --<< From the original table
+Where NameID = 1
+
+Select * from [Joins].[dbo].[Department_Partial_Where_033015]
+
+--Building a Schema of a table without data using the where clause
+
+SELECT *
+INTO Names_033015
+FROM Names
+WHERE 1=0;
+
+Select * from Names_033015 --<< Schema built that has no data
+
+--Using SQL joins
+
+USE AdventureWorks2012
+GO
+
+SELECT        
+Sales.SalesOrderDetail.SalesOrderDetailID, 
+Sales.SalesOrderDetail.OrderQty, 
+Sales.SalesOrderHeader.OrderDate, 
+Sales.SalesOrderHeader.[Status], 
+Sales.SalesOrderHeader.AccountNumber, 
+Sales.SalesOrderHeader.SubTotal, 
+Sales.SalesOrderHeader.TotalDue
+INTO SALESJOINEDTABLE_033015
+FROM            
+Sales.SalesOrderDetail 
+INNER JOIN
+Sales.SalesOrderHeader 
+ON Sales.SalesOrderDetail.SalesOrderID = Sales.SalesOrderHeader.SalesOrderID
+WHERE Sales.SalesOrderDetail.OrderQty  >= 30
+ORDER BY Sales.SalesOrderDetail.OrderQty
+
+--32 ROWS
+
+SELECT * FROM SALESJOINEDTABLE_033015
+
+--Clean up
+
+Use Joins
+Go
+
+Drop table [dbo].[Department_033015]
+Drop table [dbo].[Department_Partial_033015]
+Drop table [dbo].[Department_Partial_Where_033015]
+Drop table [dbo].[Names_033015]
+
+Use AdventureWorks2012
+Go
+
+Drop table [dbo].[SALESJOINEDTABLE_033015]
