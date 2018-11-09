@@ -1,0 +1,55 @@
+USE [AdventureWorks2012]
+GO
+
+--When creating a single clustered index on a table, you chose only one column; options seen below discussed in next course
+--Can only have ONE clustered index
+
+CREATE CLUSTERED INDEX [ClusteredIndex-20150403-160607] 
+ON [dbo]. [Names] ([Fname] ASC)
+WITH (PAD_INDEX = OFF, 
+STATISTICS_NORECOMPUTE = OFF, 
+SORT_IN_TEMPDB = OFF, 
+DROP_EXISTING = OFF, 
+ONLINE = OFF, ALLOW_ROW_LOCKS = ON, 
+ALLOW_PAGE_LOCKS = ON)
+GO
+
+--Creating a non-clustered index on a table; can have many non-clustered indexes
+
+CREATE NONCLUSTERED INDEX [NonClusteredIndex-20150403-161239] 
+ON [dbo]. [Names] ([Lname] ASC)
+WITH (PAD_INDEX = OFF, 
+STATISTICS_NORECOMPUTE = OFF, 
+SORT_IN_TEMPDB = OFF, 
+DROP_EXISTING = OFF, 
+ONLINE = OFF, 
+ALLOW_ROW_LOCKS = ON, 
+ALLOW_PAGE_LOCKS = ON)
+GO
+
+--Creating a UNIQUE non clustered index on a table; can have many non-clustered indexes
+
+CREATE UNIQUE NONCLUSTERED INDEX [NonClusteredIndex-20150403-161450] 
+ON [dbo]. [Names] ([State] ASC)
+WITH (PAD_INDEX = OFF, 
+STATISTICS_NORECOMPUTE = OFF, 
+SORT_IN_TEMPDB = OFF, 
+IGNORE_DUP_KEY = OFF, 
+DROP_EXISTING = OFF, 
+ONLINE = OFF, 
+ALLOW_ROW_LOCKS = ON, 
+ALLOW_PAGE_LOCKS = ON)
+GO
+
+--Creating a composite non clustered index on a table; can have many non-clustered indexes
+
+CREATE NONCLUSTERED INDEX [NonClusteredIndex-20150403-161629] 
+ON [dbo]. [Books] ([BookTitle] ASC, [BookAuthor] ASC)
+WITH (PAD_INDEX = OFF, 
+STATISTICS_NORECOMPUTE = OFF, 
+SORT_IN_TEMPDB = OFF, 
+DROP_EXISTING = OFF, 
+ONLINE = OFF, 
+ALLOW_ROW_LOCKS = ON, 
+ALLOW_PAGE_LOCKS = ON)
+GO
