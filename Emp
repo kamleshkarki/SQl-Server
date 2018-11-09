@@ -1,0 +1,157 @@
+<!-- create table of a Employe and EmployeInfo
+select * from Employe
+select * from Employeinfo
+Create table Employe( Emp_id int not null primary key,
+			 FirstName varchar(255),
+			 LastName varchar(255),
+			 Addres varchar(255),
+			 Pincode varchar(255),
+			 Email varchar(255),
+			 Contact varchar(250), 
+
+)
+create table Employeinfo(
+		Emp_Dep varchar(255) not null primary key,
+		Emp_Desi varchar(255),
+		Emp_Location varchar(255),
+		Emp_Sallary varchar(255),
+		Emp_id int FOREIGN KEY REFERENCES Employe(Emp_id)
+		)
+insert into Employe values(
+'100',
+'Kamlesh',
+'Karki',
+'New colony khandkhal tarikhet almora Uttarakhnad',
+'263663',
+'kkarki00@gmail.com',
+'8954230508'
+)
+insert into Employe values(
+'101',
+'Sumit',
+'Rawat',
+'NewYork',
+'148597',
+'Srawat56@outlook.com',
+'9164589759'
+)
+insert into Employe values(
+'102',
+'Raj',
+'Mitra',
+'Delhi',
+'365686',
+'Raj@outlook.com',
+'9196589578'
+)
+insert into Employe values(
+'103',
+'Amit',
+'Mishra',
+'Ranikhet',
+'263663',
+'amit88@yahoo.com',
+'918598685965'
+)
+insert into Employe values(
+'104',
+'Sumita',
+'Rathor',
+'Jaipur',
+'556936',
+'srathoe@yahoo.com',
+'9196589578'
+)
+insert into Employe values(
+'105',
+'Raj',
+'Mitra',
+'Delhi',
+'365686',
+'Raj@outlook.com',
+'9196589578'
+)
+insert into Employe values(
+'106',
+'Shri',
+'Ramashorker',
+'Pune',
+'1411028',
+'Sr@gmail.com',
+'8974856595'
+)
+insert into Employe values(
+'107',
+'Deepika',
+'Bisht',
+'US',
+'41',
+'DB@outlook.com',
+'9196589578'
+)
+insert into Employe values(
+'108',
+'Gunjan',
+'Bisht',
+'delhi',
+'598685',
+'gbisht@outlook.com',
+'526535'
+)
+insert into Employeinfo values(
+'Techonology',
+'DataAnalysis',
+'Pune',
+'2600',
+'100'
+)
+select * from Employeinfo
+insert into Employeinfo values(
+'Techonology',
+'Developer',
+'Gurgoun',
+'38000',
+'101'
+)
+insert into Employeinfo values(
+'Non Techonology',
+'ITstore',
+'Gurgoun',
+'8000',
+'102'
+)
+insert into Employeinfo values(
+'Management',
+'HR',
+'Dehradun',
+'56000',
+'103'
+)
+insert into Employeinfo values(
+'Support',
+'HR',
+'Dehradun',
+'56000',
+'104'
+)
+
+select * from Employe
+select * from Employeinfo
+<!--using where 
+select * from Employe where Addres='Delhi'
+select * from Employe where LastName= 'Bisht'
+select * from Employe where FirstName='Raj'
+select * from Employeinfo where Emp_Dep='Management'
+ALTER TABLE Customers ADD Email varchar(255);
+select * from Employe where FirstName='kamlesh' and Addres='New colony khandkhal tarikhet almora Uttarakhnad'
+select * from  Employe where LastName='mitra' or Addres='delhi'
+ <!--using or and Not operation
+select * from Employe where Addres='Delhi' and LastName='Mitra'
+select * from Employeinfo where Emp_Desi='HR' and Emp_Sallary='56000'
+select * from Employe
+select * from Employe where LastName='Bisht' or Addres='delhi'
+select * from Employeinfo where Emp_Location='Dehradun' or Emp_Desi='Itstore'
+select * from Employeinfo where not Emp_Sallary='56000'
+select * from Employe where LastName='Rathor' and(Addres='Delhi' or FirstName='sumita')
+select * from Employe where not Addres='Jaipur' and not LastName='Rathor'
+select * from Employeinfo where not Emp_Desi='Hr'and not Emp_Location='pune' 
