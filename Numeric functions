@@ -1,0 +1,108 @@
+--Numeric functions
+
+--ROUND (EXPRESSION): rounds the number to a specified length
+
+SELECT
+SALARY,
+ROUND (SALARY, 1) AS OneDecimalPlace,
+ROUND (SALARY, 2) AS TwoDecimalPlace
+FROM FUNCTIONS
+
+--ISNUMERIC (EXPRESSION) - a Boolean value returning 1 if it’s a numeric, otherwise 0
+
+SELECT ZIPCODE, ISNUMERIC (ZIPCODE) AS NUMERIC_OR_NOT
+FROM FUNCTIONS
+
+--Date/time functions:
+
+SELECT * FROM FUNCTIONS
+
+SELECT GETDATE () AS TODAYS_DATE --<< returns the current date and time
+
+SELECT DAY (GETDATE ()) AS TODAYS_DAY --<< to extract the day from the current date use day
+
+SELECT MONTH (GETDATE ()) AS TODAYS_MONTH --<< to extract the month from the current date use month
+
+SELECT YEAR (GETDATE ()) AS TODAYS_YEAR --<< to extract the year from the current date use year
+
+
+--The DATE_ADD () function adds or subtracts a specified time interval to a date.
+
+SELECT DATEADD (MONTH, 1, GETDATE ()) AS ADD_MONTH
+
+SELECT DATEADD (MONTH,-1, GETDATE ()) AS SUBTRACT_MONTH
+
+--HOW MANY MONTHS HAVE EMPLOYEES WORKED FOR THE COMPANY?
+--HOW MANY MONTHS HAS BOB WORKED FOR THE COMPANY?
+
+--DATEDIFF (date): returns number of units between the two specified dates
+
+SELECT
+RTRIM(LTRIM(FNAME)) AS FirstName,
+RTRIM(LTRIM(LNAME)) AS LastName,
+HIREDATE,
+CONVERT (VARCHAR (27),DATEDIFF(MONTH,HireDate,GETDATE())) AS MONTHS_WORKED --<< gives the difference between the hiredate and present date
+FROM FUNCTIONS
+WHERE FNAME LIKE '%BOB'
+
+--GIVE BONUS OF 10 PERCENT TO AN EMPLOYEE WHO HAS WORKED GREATED THAN 40 MONTHS
+
+SELECT
+UPPER(RTRIM(LTRIM(FNAME))) AS FirstName,
+LOWER(RTRIM(LTRIM(LNAME))) AS LastName,
+HIREDATE,
+CONVERT (VARCHAR (27),DATEDIFF(MONTH,HireDate,GETDATE())) AS MONTHS_WORKED,
+SALARY,
+(Salary * .10) AS BONUS,
+(Salary * .10) + Salary AS SALARYWITHBONUS
+FROM FUNCTIONS
+WHERE FNAME LIKE '%BOB'
+AND CONVERT (VARCHAR (27),DATEDIFF(MONTH,HireDate,GETDATE())) >= 40
+
+--WHAT IS THE NAME OF THE MONTH AND DAY EACH EMPLOYEE STARTED WORKING?
+
+--DATENAME(date): returns the name of the date specified as a character
+
+SELECT
+LTRIM(Fname) AS FirstName,
+LTRIM(RTRIM(Lname)) AS LastName,
+HireDate,
+DATENAME(MONTH,HIREDATE) AS MONTH_HIRED,
+DATENAME(DAY, HireDate) AS [DAY_DATE],
+DATENAME(WEEKDAY,HIREDATE) AS [WEEKDAY]
+FROM FUNCTIONS
+
+--The DATEPART(EXPRESSION) function is used to return a single part of a date/time
+
+SELECT FuncID, HireDate, DATEPART(yyyy, HireDate) AS Function_Year,
+DATEPART(mm, HireDate) AS Function_Month,
+DATEPART(dd, HireDate) AS Function_Day
+FROM FUNCTIONS
+WHERE FuncID In (1,2,3)
+
+--Example of how to use date functions. When is a holiday?  The following script will get current date and determine if it's a holiday.
+--If any of the months and days
+
+SELECT 
+CASE 
+WHEN (MONTH (GETDATE ()) = 7 AND DAY (GETDATE ()) = 4) OR -- July the 4th
+     (MONTH (GETDATE ()) = 1 AND DAY (GETDATE ()) = 1) OR -- New Year's Day
+     (MONTH (GETDATE ()) = 12 AND DAY (GETDATE ()) = 25) OR -- Christmas Day
+     (MONTH (GETDATE ()) = 11 AND DAY (GETDATE ()) BETWEEN 22 AND 28
+                            AND DATENAME (DW, GETDATE ()) = 'Thursday') OR -- Thanksgiving
+     (MONTH (GETDATE ()) = 5 AND DAY (GETDATE ()) BETWEEN 25 AND 31
+                            AND DATENAME (DW, GETDATE ()) = 'Monday') OR -- Memorial Day
+     (MONTH (GETDATE ()) = 9 AND DAY (GETDATE ()) BETWEEN 1 AND 7
+                            AND DATENAME (DW, GETDATE ()) = 'Monday') -- Labor Day
+THEN 'Holiday'
+ELSE 'Not a Holiday' 
+END AS [Is US Holiday]
+
+
+--ISDATE, IS THE FORMAT TRUE OR NOT
+--ISDATE (EXPRESSION) returns a 1 or a 0 indicating a true or false result.
+
+SELECT
+ISDATE ('11/29/13') AS 'MM/DD/YY', --<< True
+ISDATE ('2013-11-29') AS 'YYYY/MM/DD', --<< True
+ISDATE ('13/11/29') AS 'YYYY/MM/DD' --<< false, the year is not formatted as 4 digits
