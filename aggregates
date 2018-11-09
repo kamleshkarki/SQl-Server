@@ -142,29 +142,6 @@ SELECT COUNT([SalesOrderID]) AS TotalSalesOrderIDs
   ,[ProductID]
   ,[UnitPrice]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 SELECT AVG (InvoiceTotal) AS InvoiceAve
 FROM Invoices
  
