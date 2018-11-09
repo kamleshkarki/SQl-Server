@@ -1,0 +1,108 @@
+--SQL STRING FUNCTIONS
+--What is an SQL function?
+--SQL functions are primarily used to manipulate and/or format the data within a column.
+
+--Examples of functions:
+
+USE Joins
+GO
+
+--Create table for testing
+
+CREATE TABLE FUNCTIONS
+(FuncID int IDENTITY (1, 1) PRIMARY KEY NOT NULL,
+Fname varchar (50) NULL,
+Lname varchar (50) NULL,
+DOB datetime NULL,
+Phone varchar (30) NULL,
+Zipcode varchar (10) Null,
+HireDate datetime NULL,
+Salary decimal (18, 4) NULL,
+Sports varchar (200) NULL)
+
+SELECT * FROM FUNCTIONS
+
+--INSERT RECORDS INTO TABLE
+
+INSERT INTO FUNCTIONS
+VALUES
+('    BOB ','  SMITH ','02/01/80','NULL','92618','06/18/11',71000.251,'the sport i like is tennis'), --<< Notice spaces being added both in front and back of fname and lname
+(' SAM ',' JONES ','04/11/87','555-555-6666','92518','07/22/10',90000.524,'the SPORT i like is running'),
+('     BRAD    ', ‘MICHELS ','02/01/80 ',' 555-555-1212','32618','06/18/12',30000.554,'the sport i like is golf'),
+('   SUE     ','   DARBY ',' 07/01/68','555-666-1212 ','92677','08/13/08', 32000.000,'the sport i like is football'),
+(' frank  ','book ','12/10/86','NULL','92225','09/18/08',1000000.587 ,'the sport i LIKE is cycling'),
+(' REED','READ     ','02/01/80','555-555-2222','cs ad 35','06/18/11',712.621,'the sport i like is cycling')
+
+SELECT * FROM FUNCTIONS
+
+--EXAMPLES OF STRING FUNCTIONS
+
+--LEN(EXPRESSION) --<< provides the number of characters in a string (INCLUDING THE FRONT PADDING!)
+
+SELECT FNAME,LEN(FNAME)AS FIRSTNAME 
+FROM FUNCTIONS
+
+SELECT Lname, LEN(Lname)AS LASTNAME --<< provides the number of characters in a string (NOT INCLUDING THE TRAILING PADDING!)
+FROM FUNCTIONS
+ 
+--LTRIM(EXPRESSION): removes leading spaces
+
+SELECT FNAME,LTRIM(FNAME)AS FIRSTNAME 
+FROM FUNCTIONS
+
+--RTRIM(EXPRESSION): removes trailing spaces
+
+SELECT FNAME,RTRIM(FNAME)AS RFIRSTNAME,RTRIM(FNAME) + 'X' AS RFIRSTNAME 
+FROM FUNCTIONS
+
+--RTRIM(LTRIM(FNAME)) - removes leading and trailing spaces
+
+SELECT FNAME,RTRIM(LTRIM(FNAME))AS FIRSTNAME 
+FROM FUNCTIONS
+
+--LEFT(EXPRESSION,LENGTH): counts the left most number of characters as specified
+
+SELECT FNAME,LEFT(FNAME,2) AS LEFTNAME --<< notice that it counts the leading spaces first!
+FROM FUNCTIONS
+
+--RIGHT(EXPRESSION,LENGTH): counts the right most number of characters as specified
+
+SELECT FNAME,RIGHT(FNAME,3)AS RIGHTNAME --<< notice that it does NOT counts the trailing first!
+FROM FUNCTIONS
+
+--CONCAT(EXPRESSION,EXPRESSION): returns concatenated string
+
+SELECT FNAME,LNAME,CONCAT(FNAME,LNAME)AS CONCATNAME --joins first name and last name together
+FROM FUNCTIONS
+
+--Result as above, but with right and left trimming of spaces with nested ltrim and rtrim
+
+SELECT FNAME, LNAME, LTRIM ((RTRIM (FNAME))) + ' ' + LTRIM ((RTRIM (LNAME))) AS CONCATNAME --joins first name and last name together
+FROM FUNCTIONS
+
+--REVERSE (EXPRESSION): reverses the characters in a string
+
+SELECT SPORTS, REVERSE (SPORTS) AS REVERSESPORTS 
+FROM FUNCTIONS
+
+--REPLACE (EXPRESSION,'FIND STRING','REPLACE STRING'): replaces occurrences of a specified string
+
+SELECT SPORTS FROM FUNCTIONS
+
+SELECT SPORTS, REPLACE (SPORTS,'TENNIS', 'BOWLING') AS REPLACED --<<replaces a selected text
+FROM FUNCTIONS
+
+--SUBSTRING (EXPRESSION, START, TOTAL CHARACTERS): returns the substring as specified
+
+SELECT SPORTS, UPPER (SUBSTRING (SPORTS, 5, 6)) AS [SUBSTRING] --<< select a word from a string (5 indicates, count from left 5 characters, and then give the next 6 characters)
+FROM FUNCTIONS
+
+--UPPER (EXPRESSION): converts string to upper case
+
+SELECT SPORTS, UPPER (SPORTS) AS UPPERSPORTS 
+FROM FUNCTIONS
+
+--LOWER (EXPRESSION): converts string to lower case
+
+SELECT SPORTS, LOWER (SPORTS) AS LOWERSPORTS 
+FROM FUNCTIONS
