@@ -1,0 +1,89 @@
+CREATE DATABASE SUBQUERY
+GO
+
+USE SUBQUERY
+GO
+
+CREATE TABLE PRODUCTS
+(
+PRODUCTID INT IDENTITY PRIMARY KEY NOT NULL,
+PRODUCT_NAME VARCHAR (100) NULL,
+PRODUCT_DECS VARCHAR (125) NULL)
+
+CREATE TABLE SALES
+(
+SALESID INT IDENTITY PRIMARY KEY NOT NULL,
+PRODUCTID INT FOREIGN KEY REFERENCES PRODUCTS (PRODUCTID),
+PRODUCT_PRICE INT NULL,
+PRODUCT_QTY INT NULL)
+
+SELECT * FROM PRODUCTS
+SELECT * FROM SALES
+
+
+INSERT INTO PRODUCTS
+VALUES
+('HARLEY DAVIDSON','HARLEY BIKE THAT HAS TOP SPEED OF 180 MPH'),
+('AUSTIN MARTIN','TOP JAMES BOND MODEL OF CHOICE'),
+('SESNA','SINGLE ENGINE PLANE, EASY TO FLY')
+
+INSERT INTO SALES (PRODUCTID, PRODUCT_PRICE, PRODUCT_QTY)
+VALUES
+(2, 125000, 5),
+(3, 155000, 1),
+(2, 125000, 5),
+(3, 125000, 2),
+(2, 125000, 1)
+
+SELECT * FROM PRODUCTS
+SELECT * FROM SALES
+
+--FIND ALL THE ITEMS THAT HAVE NOT BEEN SOLD?
+
+--First look at the sales table and observe that we do not see any productid for item 1 (Harley Davidson), thus we know no Harleys were sold
+--Let’s break down how the sub query works
+
+
+--Part 1 - Outer query- provides us with all results of products table 
+SELECT PRODUCTID, PRODUCT_DECS, PRODUCT_DECS --<< Outer query
+FROM PRODUCTS
+
+--Part 2 - THEN the condition asks, give me all the	PRODUCTID OF PRODUCT TABLE NOT IN the inner/sub query
+WHERE PRODUCTID NOT IN 
+
+--Part 3 - Inner query or sub query that executes first
+
+(SELECT DISTINCT PRODUCTID FROM SALES)--<< Inner query OR SUBQUERY (When using the where clause, it should contain only one column (productid))
+
+--Give the total quantities sold of each product?
+
+SELECT * FROM PRODUCTS
+SELECT * FROM SALES
+
+Select SUM (PRODUCT_QTY) 
+From SALES --<< Gives us the total products sold; however, we want to know how many of each are sold
+
+SELECT PRODUCT_NAME,
+(Select SUM (PRODUCT_QTY) 
+ From SALES 
+ Where PRODUCTID = PRODUCTS.PRODUCTID) AS QTYFOREACHITEM
+ FROM PRODUCTS
+
+ --What was the total sales of each product?
+
+ SELECT PRODUCT_NAME,
+(Select SUM (PRODUCT_PRICE) 
+ From SALES 
+ Where PRODUCTID = PRODUCTS.PRODUCTID) AS QTYFOREACHITEM
+ FROM PRODUCT
+
+
+ --Which product sold 5 or more quantities?
+
+ SELECT PRODUCTID, PRODUCT_NAME, PRODUCT_DECS 
+ FROM PRODUCTS
+ WHERE PRODUCTID IN
+
+ (SELECT PRODUCTID 
+  FROM SALES 
+  WHERE PRODUCT_QTY = 5)
