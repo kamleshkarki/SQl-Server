@@ -1,0 +1,62 @@
+UPDATE COMMAND
+
+SELECT *
+FROM [AdventureWorks2012].[Purchasing].[Vendor]
+
+--Backup table before updating
+
+Select * Into [AdventureWorks2012].[Purchasing].[Vendor_032415] 
+From [AdventureWorks2012].[Purchasing].[Vendor]
+--(104 row(s) affected)
+
+--Using update command to update a single record
+
+Update [AdventureWorks2012].[Purchasing].[Vendor]
+Set Name = 'USA Bike Retailer'
+Where Name = 'Australia Bike Retailer'
+
+--Update a single record WITHOUT the WHERE clause - all data in column is updated.  Dangerous!!
+
+Update [AdventureWorks2012].[Purchasing].[Vendor]
+Set Name = 'USA Bike Retailer'
+
+--Restoring the original table. Note that the constraints are not restored.
+
+--Drop table [AdventureWorks2012].[Purchasing].[Vendor]
+
+--Update more than one column at a time
+
+Update [AdventureWorks2012].[Purchasing].[Vendor]
+Set 
+Name = 'USA Bike Retailer',
+AccountNumber = 'ABCDEFG'
+Where BusinessEntityID = 1492
+
+--Using an expression to update a column
+
+--Backup table.  Use the backup table for testing.
+
+Select * Into [AdventureWorks2012].[Sales].[SalesOrderDetail_032415] 
+From [AdventureWorks2012].[Sales].[SalesOrderDetail]
+--(121317 row(s) affected)
+
+SELECT 
+      [SalesOrderDetailID]
+      ,[OrderQty]
+      ,[ProductID]
+      ,[UnitPrice]
+      ,[LineTotal]
+      ,[ModifiedDate]
+  FROM [AdventureWorks2012].[Sales].[SalesOrderDetail_032415] 
+
+--If you run the update again, it will add the value.  So comment out the update, when done!
+
+Update [AdventureWorks2012].[Sales].[SalesOrderDetail_032415] 
+Set OrderQty = OrderQty + 3
+Where SalesOrderDetailID = 1
+
+
+--Restore the original table
+
+Drop table [AdventureWorks2012].[Sales].[SalesOrderDetail_032415] 
+
