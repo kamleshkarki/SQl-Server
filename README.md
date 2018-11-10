@@ -30,5 +30,5 @@ PWD:   Password#12345
 
 https://www.dropbox.com/s/timwtkbfakrxdis/SERVER2017.zip?dl=0
 
-SSRS
-SSIS
+SSRS.
+SSIS.
