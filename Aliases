@@ -38,7 +38,6 @@ ProductName varchar (30),
 Quantity int
 )
 
-
 select * from Orders
 select * from Product
 
