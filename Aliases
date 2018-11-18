@@ -1,4 +1,3 @@
-
 --Using Aliases to rename both the columns and the tables for clarity
 
 SELECT [DepartmentID]
