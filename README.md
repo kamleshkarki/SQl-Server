@@ -1,4 +1,4 @@
-# SQl-
+# SQl Server
 some are the path to use 'Sql server' the link's are below as:
 This repositorie for batter understanding and recall SQL Server.
 
