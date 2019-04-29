@@ -1,10 +1,7 @@
-
 /*
-
 Using the same caution as an update, when deleting rows from a table, use the where clause.
 A safe way to insure that you are deleting only the rows you want to delete, is first do a select statement for that delete,
 and if you’re satisfied with the result set, then use the delete command.
-
 */
 
  
