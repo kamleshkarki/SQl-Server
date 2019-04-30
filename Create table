@@ -1,10 +1,10 @@
 USE AdventureWorks2012
 GO
-
 --Create a simple table
 
 CREATE TABLE Bridges
-(BridgeID int identity (1, 1) Not null Primary Key,--<< Note the identity (1, 1).  This auto increments the primary key BridgeID. Cannot be blank
+(BridgeID int identity (1, 1) Not null Primary Key,
+--<< Note the identity (1, 1).This auto increments the primary key BridgeID. Cannot be blank
 BridgeName varchar (50) Null, --<<Note Null.  This states that the column can contain omitted data
 BridgeCity varchar (50) Null,
 BridgeCountry varchar (50) Null)
