@@ -1,6 +1,6 @@
 # SQl Server
 Use 'Sql server' the link's are below as:
-This repositorie for batter understanding and recall SQL Server.
+This repository for better understanding and recall SQL Server.
 
 virtual box
 
