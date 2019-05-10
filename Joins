@@ -1,4 +1,3 @@
-
 /*when we use SQL joins.
 When we create a table with various columns, we also create a column with increasing values such as an integer.  
 This column is then set as a primary key for that whole table; and the purpose of that primary key is to keep each row of data unique.  
