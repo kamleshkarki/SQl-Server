@@ -1,5 +1,4 @@
---How to use Data Manipulation Language (DML)
-
+Use Data Manipulation Language (DML)
 --Data Manipulation Language (DML): SELECT
 --The most commonly used command in T-SQL is the SELECT statement. 
 --It is used to query or retrieve data from a table or multiple tables.
@@ -9,12 +8,9 @@
 
 USE AdventureWorks2012
 GO
-
 --select all columns using the '*'
-
 SELECT *
 FROM HumanResources.Department
-
 --select specific columns
 
 SELECT DepartmentID,Name,GroupName
