@@ -1,8 +1,6 @@
 --Create Sales db for testing
-
 USEmaster;
 GO
-
 CREATEDATABASESales--<Database Name
 ONPRIMARY--<File Group
 (NAME=Sales_dat,--<DB mdf Name
@@ -16,13 +14,12 @@ FILENAME='C:\DataFiles\salelog.ldf',
 SIZE= 5MB,
 MAXSIZE= 25MB,
 FILEGROWTH=5MB);
-GO
 
+GO
 USESALES
 GO
 
 --Create Table for testing
-
 CREATE TABLE Employee
 (EmpIDintIdentity (1,1)PrimaryKeyNotNull,--<primary key constraint
 Fnamevarchar(15)Null,
@@ -42,7 +39,6 @@ ALTERTABLEEmployee
 ADDDateOfBirthdate
 
 Select*FromEmployee
-
 --USE ALTER CHANGE DATA TYPE
 
 ALTERTABLEEmployee
@@ -86,5 +82,4 @@ USEmaster
 GO
 
 DROPDATABASESales
-
 https://technet.microsoft.com/en-us/library/cc879314%28v=sql.110%29.aspx
