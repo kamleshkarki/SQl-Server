@@ -3,7 +3,6 @@ Use Data Manipulation Language (DML)
 --The most commonly used command in T-SQL is the SELECT statement. 
 --It is used to query or retrieve data from a table or multiple tables.
 --To create a simple select query, you can use the specifics columns or retrieve all columns by using the ‘*’ wildcard.
-
 --EXAMPLES OF SELECT COMMAND
 
 USE AdventureWorks2012
