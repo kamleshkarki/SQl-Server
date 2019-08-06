@@ -22,4 +22,4 @@ select ename,egender,elocation,dname,dlocation from EMPLOYEE join department on 
 select ename,egender,elocation,dname,dlocation from EMPLOYEE left outer join department on EMPLOYEE.did=department.deptid
 select ename,egender,elocation,dname,dlocation from EMPLOYEE right outer join department on EMPLOYEE.did=department.deptid
 select ename,egender,elocation,dname,dlocation from EMPLOYEE full outer join department on EMPLOYEE.did=department.deptid
-select ename,egender,elocation,dname,dlocation from EMPLOYEE cross join department.
+select ename,egender,elocation,dname,dlocation from EMPLOYEE cross join department
