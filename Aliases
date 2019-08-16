@@ -83,9 +83,3 @@ Orders as o --<< Note that for the table alias, we use the key word AS followed 
 INNER JOIN
 Product as p --<< Note that for the table alias, we use the key word AS followed by the alias
 ON o.OrderID = p.ProductID
-
-
-
-
-
-
