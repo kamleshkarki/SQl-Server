@@ -70,7 +70,6 @@ Orders
 INNER JOIN
 Product ON Orders.OrderID = Product.ProductID
 
-
 --Join with aliases (substituting o. for Orders fields and p. for Products fields)
 
 SELECT    
