@@ -1,6 +1,5 @@
 /*
-trigger?
-
+trigger-
 A trigger is a special type of a procedure that 'fires' when an event such as INSERT, DELETE or UPDATE occurs occurs
 They are regared as 'event-driven specialized procedures', and as such are stored in and managed by the RDBMS
 A trigger fires when we modify the data modification to the associated table by suing one of the events INSERT, DELETE or UPDATE
