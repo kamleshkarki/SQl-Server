@@ -1,4 +1,4 @@
--Using Aliases to rename both the columns and the tables for clarity
+*-Using Aliases to rename both the columns and the tables for clarity
 SELECT [DepartmentID]
       ,[Name]
       ,[GroupName]
@@ -37,7 +37,6 @@ Quantity int
 
 select * from Orders
 select * from Product
-
 --Insert records
 
 Insert Into  Orders
@@ -70,7 +69,7 @@ Orders
 INNER JOIN
 Product ON Orders.OrderID = Product.ProductID
 
---Join with aliases (substituting o. for Orders fields and p. for Products fields)
+-Join with aliases (substituting o. for Orders fields and p. for Products fields)
 
 SELECT    
 o.OrderID, 
