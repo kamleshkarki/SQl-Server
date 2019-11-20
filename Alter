@@ -1,4 +1,5 @@
---Create Sales db for testing
+
+Create Sales db for testing
 USEmaster;
 GO
 CREATEDATABASESales--<Database Name
