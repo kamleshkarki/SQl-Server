@@ -54,11 +54,8 @@ Values
 (3,234,'Bat',3),
 (4,678,'Book',7789),
 (5,789,'Towel',33)
-
 --Using aliases to rename columns and tables for efficincy and distinguishing fields
-
 --Original join without aliases
-
 SELECT        
 Orders.OrderID AS Expr4,
 Product.ProductName AS Expr6,
