@@ -4,7 +4,6 @@ SELECT [DepartmentID]
       ,[GroupName]
       ,[ModifiedDate]
   FROM [AdventureWorks2012].[HumanResources].[Department]
-
 --Using aliases with brackets to rename columns
 
 SELECT Name AS DeptName, GroupName AS [Area of Expertise]--<< Note the brackets needed because of space between column alias
