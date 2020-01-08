@@ -1,4 +1,4 @@
-//
+**//
 USE [AdventureWorks2012]
 GO
 --When creating a single clustered index on a table, you chose only one column; options seen below discussed in next course
