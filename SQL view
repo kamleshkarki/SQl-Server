@@ -1,7 +1,4 @@
-/*
-SQL view------------
-
-A view can be thought of as either a virtual table or a stored query which is stored in the database as a SELECT statement
+SQL view a view can be thought of as either a virtual table or a stored query which is stored in the database as a SELECT statement
 A user can use this virtual table just as he/she would the same way a table
 Views are created by defining the SELECT statement and then prefixing that statement with the CREATE VIEW command
 The table that provide the data are called base tables
