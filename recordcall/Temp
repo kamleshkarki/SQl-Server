@@ -1,0 +1,199 @@
+use [Enquery Summary 2019]
+use [2019 Credit Card Enquery Summary]
+select * from April2019$
+select * from May2019$
+select * from June2019$
+----------------------------
+<---Drope July---->
+Drop table July2019$
+<!--update July-->
+select * from July2019$
+<!--Reupend july->
+select * from August2019$
+select * from September2019$
+select * from October2019$
+select * from November2019$
+select * from December2019$
+select * from july2019$ where ServiceRequest_id='7944818'
+select * from july2019$ where ServiceRequest_id='9684765'
+SELECT COUNT(ServiceRequest_id) FROM July2019$
+
+
+
+Drop table April2019$
+SELECT SERVERPROPERTY('edition')
+
+
+select * from  Crm_Feb2019$
+use [Inquery Summary _2019]
+select * from Crm_sep2019$
+use CRMInquery
+
+select * from Crm_July2019$
+select distinct * from April2019$ left join Crm_April2019$ on April2019$.[ServiceRequest_Id]=Crm_April2019$.[ServiceRequest_Id]
+ 
+select distinct t1.*,ak.Closure_Comments,ak.Comments,ak.Resolved_Comments from August2019$ t1 inner join 
+(select * from Crm_April2019$ 
+union all select * from Crm_May2019$ 
+union all select * from Crm_Jun2019$ 
+union all select * from Crm_July2019$
+union all select * from Crm_Aug2019$ 
+union all select * from Crm_sep2019$ 
+union all select * from Crm_Oct2019$ 
+union all select * from Crm_Nov2019$
+union all select * from Crm_Dec2019$ 
+union all select * from Crm_Jan2019$ 
+union all select * from Crm_Feb2019$ 
+union all select * from Crm_Mar2019$) ak
+on t1.ServiceRequest_Id = ak.ServiceRequest_Id
+
+select * from Crm_July2019$
+
+select * into April19_Result from(
+select distinct t1.Months_1,t1.ServiceRequest_Id,t1.CardEmbossed_Name,t1.Card_logo,t1.Location,t1.Origin,t1.Sub_Category,t1.Sub_Sub_Category,t1.Status_Code,t1.Assigned_To,t1.Created_On,t1.Internal_Duedate,t1.Due_date,t1.[Previous_StatusCode],t1.Creator_Department,t1.[Owner],t1.Last_ModifiedBy,t1.ServiceRequests_Type,t1.Reassigned_Reason,t1.Rejected_Reason,t1.Resolved_On,t1.Department_Assignedto,t1.ClosedWithin_OutsideTAT,t1.Closure_DateandTime,t1.Original_Creator,t1.[Source],t1.Created_date,t1.Closed_date,t1.Card_Category,t1.BFL_TAG
+, ak.Closure_Comments, ak.Resolved_Comments,ak.Comments from 
+(select * from April2019$
+union all select * from May2019$
+union all select * from June2019$
+union all select * from July2019$
+union all select * from August2019$
+union all select * from September2019$
+union all select * from October2019$
+union all select * from November2019$
+union all select * from December2019$) t1 Left join
+(select * from Crm_April2019$ 
+union all select * from Crm_May2019$ 
+union all select * from Crm_Jun2019$ 
+union all select * from Crm_July2019$
+union all select * from Crm_Aug2019$ 
+union all select * from Crm_sep2019$ 
+union all select * from Crm_Oct2019$ 
+union all select * from Crm_Nov2019$
+union all select * from Crm_Dec2019$ 
+union all select * from Crm_Jan2019$ 
+union all select * from Crm_Feb2019$ 
+union all select * from Crm_Mar2019$) ak
+on t1.ServiceRequest_Id = ak.ServiceRequest_Id where (Months_1='December_19') And Comments is not null
+
+
+
+
+select * into April19_Result from(
+select distinct t1.Months_1,t1.ServiceRequest_Id,t1.CardEmbossed_Name,t1.Card_logo,t1.Location,t1.Origin,t1.Sub_Category,t1.Sub_Sub_Category,t1.Status_Code,t1.Assigned_To,t1.Created_On,t1.Internal_Duedate,t1.Due_date,t1.[Previous_StatusCode],t1.Creator_Department,t1.[Owner],t1.Last_ModifiedBy,t1.ServiceRequests_Type,t1.Reassigned_Reason,t1.Rejected_Reason,t1.Resolved_On,t1.Department_Assignedto,t1.ClosedWithin_OutsideTAT,t1.Closure_DateandTime,t1.Original_Creator,t1.[Source],t1.Created_date,t1.Closed_date,t1.Card_Category,t1.BFL_TAG
+, ak.Closure_Comments, ak.Resolved_Comments,ak.Comments from 
+(select * from April2019$
+union all select * from May2019$
+union all select * from June2019$
+union all select * from July2019$
+union all select * from August2019$
+union all select * from September2019$
+union all select * from October2019$
+union all select * from November2019$
+union all select * from December2019$) t1 Left join
+(select * from Crm_April2019$ 
+union all select * from Crm_May2019$ 
+union all select * from Crm_Jun2019$ 
+union all select * from Crm_July2019$
+union all select * from Crm_Aug2019$ 
+union all select * from Crm_sep2019$ 
+union all select * from Crm_Oct2019$ 
+union all select * from Crm_Nov2019$
+union all select * from Crm_Dec2019$ 
+union all select * from Crm_Jan2019$ 
+union all select * from Crm_Feb2019$ 
+union all select * from Crm_Mar2019$) ak
+on t1.ServiceRequest_Id = ak.ServiceRequest_Id where (Months_1='April_19') And Comments is not null)z
+
+select * from Crm_Jan2019$
+select * from Crm_Feb2019$
+select * from Crm_Mar2019$
+select * from Crm_April2019$
+select * from Crm_May2019$
+select * from Dec_2019$
+select * from Crm_Sep2019$$ where ServiceRequest_Id='11972624'
+select * from Crm_sep2019$$ where comments is null
+select * from Crm_sep2019$$ where comments is not null
+Crm_sep2019$$
+
+drop table Crm_sep29$$
+select * from December19_Result
+
+
+
+
+
+
+drop table Crm_sep2019$
+drop table Crm_April2019$--
+
+drop table Crm_Aug2019$
+drop table Dec_2019$
+drop table Crm_Feb2019$
+drop table Crm_Jan2019$
+drop table Crm_July2019$
+drop table Crm_Jun2019$
+drop table Crm_Mar2019$
+drop table Crm_Nov2019$
+drop table Crm_Oct2019$
+drop table Crm_Sep2019$
+
+
+
+
+
+
+
+
+
+
+
+
+select * from Crm_April2019$ where comment
+select * from ['2019sep$'] where ServiceRequest_Id='11157814'
+
+
+
+
+
+select * form 
+
+select * from April19_result
+select * from May19_Result
+select * from June19_Result
+select * from July19_Result
+select * from August19_Result
+select * from September19_Result
+select * from October19_Result
+select * from November19__Result
+select * from December19_Result
+
+
+select * into July_Result from(
+select distinct t1.Months_1,t1.ServiceRequest_Id,t1.CardEmbossed_Name,t1.Card_logo,t1.Location,t1.Origin,t1.Sub_Category,t1.Sub_Sub_Category,t1.Status_Code,t1.Assigned_To,t1.Created_On,t1.Internal_Duedate,t1.Due_date,t1.[Previous_StatusCode],t1.Creator_Department,t1.[Owner],t1.Last_ModifiedBy,t1.ServiceRequests_Type,t1.Reassigned_Reason,t1.Rejected_Reason,t1.Resolved_On,t1.Department_Assignedto,t1.ClosedWithin_OutsideTAT,t1.Closure_DateandTime,t1.Original_Creator,t1.[Source],t1.Created_date,t1.Closed_date,t1.Card_Category,t1.BFL_TAG
+, ak.Closure_Comments, ak.Resolved_Comments,ak.Comments from 
+(select * from April2019$
+union all select * from May2019$
+union all select * from June2019$
+union all select * from July2019$
+union all select * from August2019$
+union all select * from September2019$
+union all select * from October2019$
+union all select * from November2019$
+union all select * from December2019$) t1 Left join
+(select * from Crm_April2019$ 
+union all select * from Crm_May2019$ 
+union all select * from Crm_Jun2019$ 
+union all select * from Crm_July2019$
+union all select * from Crm_Aug2019$ 
+union all select * from Crm_sep2019$ 
+union all select * from Crm_Oct2019$ 
+union all select * from Crm_Nov2019$
+union all select * from Crm_Dec2019$ 
+union all select * from Crm_Jan2019$ 
+union all select * from Crm_Feb2019$ 
+union all select * from Crm_Mar2019$) ak
+on t1.ServiceRequest_Id = ak.ServiceRequest_Id where (Months_1='July_19') And Comments is not null)z
+
+
+
+select * from crm_2019sep$
