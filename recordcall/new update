@@ -1,0 +1,8 @@
+select * from test1
+select * from test2
+select * from Order_detail (temp table)
+---------------------------------------------------
+select * into Order_detail from(select distinct t1.Order_id,t1.Food,t1.Amount,t1.Available,t2.Orderdate,t2.orderTime,t2.City,t2.Contact_Number
+from(select * from test1)t1 left join
+(select * from test2)t2
+on t1.order_id=t2.Order_Id)z
