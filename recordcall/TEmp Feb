@@ -1,0 +1,233 @@
+create database Demo
+use demo
+
+select * from Test1
+insert into Test1 values('1001','APPLE','100','TRUE')
+insert into Test1 values ('1002','ORANGE','501','FALSE')
+
+create table test2(Order_Id varchar(255), OrderDate varchar(255), OrderTime varchar(255),City varchar(255),Contact_Number varchar(50)  primary key (order_Id))
+
+alter table test2 alter column Order_Id varchar(255)
+
+select * from test2
+insert into Test2 values('C1002','25-8-2018','10:15','Delhi','9445858685')
+alter table Test2 alter Column date varchar(255)
+select * from test2
+alter table test1 add Order_Id varchar(255)
+ALTER TABLE Customers ADD Email varchar(255);
+
+alter table test2 alter column Order_Id primary key
+
+
+select * from test1
+alter table test2 add primary key(Order_Id)
+insert into Test1 values ('1002','ORANGE','501','FALSE')
+
+update test1 set Order_id='C1002' where id='1002'
+update Test1 set Available='FALSE' where Amount= '100'
+ALTER TABLE Customers ADD Email varchar(255);
+alter table Test1$ alter column Available varchar(255)
+
+alter table test2
+drop constraint PK__test2__F1E4607B5AF0D0FC
+
+use CRMInquery
+select * from Crm_comment2019_2020
+
+select * from test1
+select * from test2
+select * from Addresss
+select * from Order_detail
+
+insert into Addresss values ('C1002','9445858685','Delhi','122001')
+update Addresss set Order_id='C1001' where City= 'Pune'
+create table Addresss(Order_id varchar(255), Contact_number varchar(255), city varchar(255), pincode varchar(255))
+
+alter table test1 drop column id
+
+
+select * into Order_detail from(select distinct t1.Order_id,t1.Food,t1.Amount,t1.Available,t2.Orderdate,t2.orderTime,t2.City,t2.Contact_Number
+from(select * from test1)t1 left join
+(select * from test2)t2
+on t1.order_id=t2.Order_Id)z
+
+CREATE VIEW [Products Above Average Price] AS SELECT ProductName, Price FROM Products WHERE Price > (SELECT AVG(Price) FROM Products);
+
+create view Display as select Amount, Food,Order_Id from test1 where amount <=100(select amount from test1)
+select * from [Display]
+
+
+
+
+--New Data base handle 2017_2020 data
+create database CCInquery_2017_2020
+use CCInquery2017_2020
+--year Inquery 2019-2020
+select * from ResultInquiry2019_2020
+--Year End
+--year Crm comment 2019-2020
+select * from Crm_comment2019_2020
+--Year End
+--year start
+--year Inquery 2018-2019
+select * from ResultInquiry2018_2019
+--year Crm comment 2018-2019
+select * from ResultCrm2018_2019
+--year End
+
+
+
+
+-- Backup the CRMInquery database using the date time stamp
+DECLARE @BackupName VARCHAR(100)
+SET @BackupName=CONCAT('D:\2020\Data_backup-',FORMAT(GETDATE(),'yyyy-MM-dd-hh-mm-tt'),'.bak')
+BACKUP DATABASE CRMInquery TO DISK=@BackupName WITH COMPRESSION, INIT;
+GO
+
+-- Backup the CRMInquery database using the date time stamp
+DECLARE @BackupName VARCHAR(300)
+SET @BackupName=CONCAT('D:\2020\Data_backup\CCInquery2017_2020\',FORMAT(GETDATE(),'yyyy-MM-dd-hh-mm-tt'),'.bak')
+BACKUP DATABASE CCInquery2017_2020 TO DISK=@BackupName WITH COMPRESSION, INIT;
+GO
+
+
+DECLARE @BackupName VARCHAR(300)
+SET @BackupName=CONCAT('D:\Backup\RequestClose2017_2020\',FORMAT(GETDATE(),'yyyy-MM-dd-hh-mm-tt'),'.bak')
+BACKUP DATABASE CCInquery2017_2020 TO DISK=@BackupName WITH COMPRESSION, INIT;
+GO
+
+
+
+D:\2020\Data_backup\CCInquery2017_2020\
+
+select * from test1
+
+delete from test1 where Amount ='100'
+Begin tran delete from Test1
+
+Begin Tran 
+DELETE FROM test1 
+   WHERE Amount = '100'; 
+ROLLBACK
+
+use Demo
+
+use CRMInquery
+select * from INFORMATION_SCHEMA.Tables
+use [RBI Audit Jan_Dec 2019]
+select * from INFORMATION_SCHEMA.TABLES
+select * from INFORMATION_SCHEMA.tables
+use Consolidated_Complaint_RequestSummary19_20
+use [RBI Audit Jan_Dec 2019]
+select * from INFORMATION_SCHEMA.TABLES
+select * from INFORMATION_SCHEMA.TABLES
+
+exec sp_databases
+use master
+select * from INFORMATION_SCHEMA.TABLES
+select * from spt_fallback_db
+select * from spt_fallback_dev
+select * from spt_monitor
+exec sp_databases
+
+use CRMInquery
+select * from INFORMATION_SCHEMA.TABLES
+
+use CCInquery2017_2020
+select * from INFORMATION_SCHEMA.TABLES
+
+use [RBI Audit Jan_Dec 2019]
+drop database Consolidated_Complaint_RequestSummary19_20
+select * from INFORMATION_SCHEMA.TABLES
+select * from [Result RBI Audit Jan-Dec2019]
+
+Use  CCInquery2017_2020
+select * from ResultInquiry2017_2018
+
+--combine May 2017
+select * into ['2017_May$'] from(
+	select * from ['2017_May1$'] union all
+select * from ['2017_May2$'])z
+drop table ['2017_May1$']
+drop table ['2017_May$']
+drop table ['2017_Nov$']
+--close May 2017
+
+drop table ['2017_oct$']
+
+
+
+select * from ['2017_April$$']
+  union all
+select * from ['2018_March$'] 
+
+drop table 2017
+
+
+select * from[Nov_2017]union all
+select * from ['2017_April$$'] union all
+---------------------------------------
+drop table Nov_2017$
+select * from  ['2017_oct$'] union all
+select * from ['2017_oct2$'] union all
+-----------------------------------------
+select * from ['2017_oct$'] union all
+select * into [2017_sep] from(
+select * from [sep1_2017$] union all
+select * from [sep2_2017$])z
+select * from [sep_17$]
+
+select * from [2017_sep]
+use RequestClose2017_2020
+drop table RequestRecived2019
+
+drop database CRMRequest
+
+
+select * from ResultInquiry2019_2020 
+select distinct t1.[Months_1],t1.ServiceRequest_Id,t1.CardEmbossed_Name,t1.Card_logo,t1.Location,t1.Origin,t1.Sub_Category,t1.Sub_Sub_Category,t1.Status_Code,t1.Assigned_To,t1.Created_On,t1.Internal_Duedate,t1.Due_date,t1.[Previous_StatusCode],t1.Creator_Department,t1.[Owner],t1.Last_ModifiedBy,t1.ServiceRequests_Type,t1.Reassigned_Reason,t1.Rejected_Reason,t1.Resolved_On,t1.Department_Assignedto,t1.ClosedWithin_OutsideTAT,t1.Closure_DateandTime,t1.Original_Creator,t1.[Source],t1.Created_date,t1.Closed_date,t1.Card_Category,t1.BFL_TAG
+, ak.Closure_Comments,ak.Comments from 
+(select * from ResultInquiry2019_2020) t1 left join
+(select * from ResultCrm2019_2020)ak
+on t1.ServiceRequest_Id=ak.ServiceRequest_Id where [Months_1]='April_19'
+
+select Original_Creator, created_date from ResultInquiry2019_2020 
+select * from ResultInquiry2019_2020 
+
+select * into Temp from(
+select * from ResultInquiry2019_2020 
+)z
+select * from Temp
+update Temp set created_date = '2013-09-23 12:00:00.000'
+
+SELECT  Title,  FirstName,  MiddleName,   LastName,  CONCAT(Title,' ',FirstName,' ',MiddleName,' ',LastName) as MailingName FROM Person.Person
+select * from Temp
+SELECT [Months_1],ServiceRequest_Id,CardEmbossed_Name,Card_logo,Location,Origin,Sub_Category,Sub_Sub_Category,Status_Code,Assigned_To,Created_On,Internal_Duedate,Due_date,[Previous_StatusCode],Creator_Department,[Owner],Last_ModifiedBy,ServiceRequests_Type,Reassigned_Reason,Rejected_Reason,Resolved_On,Department_Assignedto,ClosedWithin_OutsideTAT,Closure_DateandTime,Original_Creator,[Source],Created_date,Closed_date,Card_Category,BFL_TAG
+SELECT ServiceRequest_Id,CardEmbossed_Name,Card_logo,Location,Origin,Sub_Category,Sub_Sub_Category,Status_Code,Assigned_To,Created_On,Internal_Duedate,Due_date,[Previous_StatusCode],Creator_Department,[Owner],Last_ModifiedBy,ServiceRequests_Type,Reassigned_Reason,Rejected_Reason,Resolved_On,Department_Assignedto,ClosedWithin_OutsideTAT,Closure_DateandTime,Original_Creator,[Source],Created_date,Closed_date,Card_Category,BFL_TAG,[Months_1], CONCAT(Original_Creator,' ',created_date) as Concatenat FROM Temp where Months_1='April_19'
+--
+SELECT ServiceRequest_Id,CardEmbossed_Name,Card_logo,Location,Origin,Sub_Category,Sub_Sub_Category,Status_Code,Assigned_To,Created_On,Internal_Duedate,Due_date,[Previous_StatusCode],Creator_Department,[Owner],Last_ModifiedBy,ServiceRequests_Type,Reassigned_Reason,Rejected_Reason,Resolved_On,Department_Assignedto,ClosedWithin_OutsideTAT,Closure_DateandTime,Original_Creator,[Source],Created_date,Closed_date,Card_Category,BFL_TAG,[Months_1], CONCAT(created_date,' ',Original_Creator) as Concatenat FROM Temp where Months_1='April_19'
+select * from temp
+SELECT FORMAT(GETDATE(), 'Y', 'en-US' ) AS 'created_date' FROM Temp where Months_1='May_19'
+SELECT ServiceRequest_Id,CardEmbossed_Name,Card_logo,Location,Origin,Sub_Category,Sub_Sub_Category,Status_Code,Assigned_To,Created_On,Internal_Duedate,Due_date,[Previous_StatusCode],Creator_Department,[Owner],Last_ModifiedBy,ServiceRequests_Type,Reassigned_Reason,Rejected_Reason,Resolved_On,Department_Assignedto,ClosedWithin_OutsideTAT,Closure_DateandTime,Original_Creator,[Source],Created_date,Closed_date,Card_Category,BFL_TAG,[Months_1], CONCAT(Original_Creator,' ',created_date) as Concatenat FROM Temp where Months_1='April_19'
+SELECT FORMAT(GETDATE(), 'Y', 'en-US' ) AS 'created_date' FROM Temp where Months_1='May_19'
+ALTER COLUMN DATE1 AS (DD/MM/YYYY
+
+ALTER TABLE ABC ALTER COLUMN DATE1 AS (DD/MM/YYYY)
+alter table Temp ALTER COLUMN created_date(MM/YY)
+SELECT CONVERT(date, getdate())created_date, Original_Creator, CONCAT(created_date,' ', Original_Creator) as Concatenat FROM TEMP WHeRE  Months_1='April_19'
+SELECT CONVERT(created_date, getdate())
+select substring([Closure Date],1,10) 
+select * from CloseApril_2018$
+SELECT SUBSTRING([original creator],[Closure Date], 1, 7) AS [original creator],[Closure Date] FROM CloseApril_2018$
+SELECT SUBSTRING(CustomerName, 1, 5) AS ExtractString FROM Customers;
+SELECT CONVERT(VARCHAR(10),[Closure Date],103) AS [Closure Date] FROM CloseApril_2018$(
+Select * from CloseApril_2018$)
+
+
+
+
+select distinct t1.[Months_1],t1.ServiceRequest_Id,t1.CardEmbossed_Name,t1.Card_logo,t1.Location,t1.Origin,t1.Sub_Category,t1.Sub_Sub_Category,t1.Status_Code,t1.Assigned_To,t1.Created_On,t1.Internal_Duedate,t1.Due_date,t1.[Previous_StatusCode],t1.Creator_Department,t1.[Owner],t1.Last_ModifiedBy,t1.ServiceRequests_Type,t1.Reassigned_Reason,t1.Rejected_Reason,t1.Resolved_On,t1.Department_Assignedto,t1.ClosedWithin_OutsideTAT,t1.Closure_DateandTime,t1.Original_Creator,t1.[Source],t1.Created_date,t1.Closed_date,t1.Card_Category,t1.BFL_TAG
+, ak.Closure_Comments,ak.Comments from 
+(select * from ResultInquiry2017_2018) t1 left join
+(select * from ResultCrm2017_2018)ak
+on t1.ServiceRequest_Id=ak.ServiceRequest_Id where [Months_1]='June_17'
