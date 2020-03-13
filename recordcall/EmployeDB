@@ -1,0 +1,94 @@
+create database Employe
+use Employe
+--Start Employee Informatation
+create table Employee(
+E_id int primary key not null,
+Emp_Name varchar(255) not null,
+Emp_Department varchar(255) not null,
+Emp_Contact Varchar(10) not null,
+Emp_Address varchar(255)
+)
+select * from Employee
+insert into Employee values('15739','Kamlesh','BI Analyst','7845896325','Noida')
+insert into Employee values('15740','Ramesh','Business Development','7748963250','Gurgoun')
+insert into Employee values('15854','Sohan','Developer','7584556325','Gurgoun')
+insert into Employee values('15710','kavita','BI Analyst','8745894857','Pune')
+insert into Employee values('14700','Parul','Developer','8963254585','Mumbai')
+--close informatation
+--create Employe Department
+create table Department(
+Dep_id int primary key not null,
+Department_Name varchar(50) not null,
+Department_Location varchar(100)not null,
+Department_Country varchar(70) not null,
+E_id int Foreign key references Employee(E_id)
+)
+update Department set Months_1='January_2019' where Months_1 is Null 
+update Department set Dep_id='1001' where Department_Name='Developer'
+select * from Department
+insert into Department values('1001','BI Analyst','Noida','India','15739')
+insert into Department values('1002','Developer','Gurgoun','India','15854')
+insert into Department values('1003','BI Analyst','Pune','India','15710')
+insert into Department values('1004','Developer','Mumbai','India','14700')
+insert into Department values('1004','Developer','Gurgoun','India','15740')
+insert into Department values('1003','Business Development','Gurgoun','India','15740')
+
+update Department set Department_Name='Business Development' where 
+
+
+--close informatation Department
+--create Salary
+create table Employesalary(
+Employe_Name varchar(255) not null,
+Department_Name varchar(50) Not Null,
+Emp_Salary float(50) not null,
+E_id int foreign key references Employee(E_id)
+)
+
+select * from Employesalary
+insert into Employesalary values('Kamlesh','BI Analyst','46325','15739')
+insert into Employesalary values('Ramesh','Business Development','603250','15740')
+insert into Employesalary values('Sohan','Developer','556325','15854')
+insert into Employesalary values('kavita','BI Analyst','94857','15710')
+insert into Employesalary values('Parul','Developer','25405','14700')
+--close informatation Employesalary
+
+select * from Employesalary
+select * from Employee
+
+
+select * from Department
+select distinct t1.E_id,t1.Emp_Name,t1.Emp_department,t1.Emp_Address,t1.Emp_Contact,
+t2.department_Name,t2.Department_Location,t2.Department_Country from
+(select * from Employee)t1 left join
+(select * from Department)t2  on
+t2.E_id=t1.E_id
+
+create view EmployeInfo as(select distinct t1.E_id,t1.Emp_Name,t1.Emp_department,t1.Emp_Address,t1.Emp_Contact,
+t2.department_Name,t2.Department_Location,t2.Department_Country from
+(select * from Employee)t1 left join
+(select * from Department)t2  on
+t2.E_id=t1.E_id)
+
+
+create view Empdetails as(select distinct t1.E_id,t1.Emp_Name,t1.Emp_department,t1.Emp_Contact,t1.Emp_Address,
+t1.Department_Location,t1.Department_Country,t3.Emp_Salary from
+(select * from EmployeInfo)t1 left join
+(select * from Employesalary)t3 on
+t1.E_id=t3.E_id)
+
+select * from EmployeInfo
+select * from Empdetails
+create view Empsalary as(select E_id,Emp_Name,Department_Location,Emp_Salary from Empdetails) 
+select * from Empsalary where Emp_Name like'K%' order by Emp_Name
+select [Emp_Salary], COUNT([Emp_Salary]) as TotalSalary from Empsalary group by [Emp_Salary]
+create view GETHike as(select  E_id,Emp_Name,Emp_Department,Emp_Salary from Empdetails)
+block
+select * from EmployeInfo Order by Emp_Name
+select * from Empdetails Order by Emp_Department
+select * from Empsalary where Emp_Name like'K%' order by Emp_Name
+select * from GetHike order by Emp_salary desc
+select SUM([Emp_Salary]) as TotalSalary from Empsalary
+block
+select * from GetHike order by Emp_salary desc
+select * from  Emp_Name like'K%' order by Emp_Name
