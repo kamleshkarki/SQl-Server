@@ -32,3 +32,15 @@ https://www.dropbox.com/s/timwtkbfakrxdis/SERVER2017.zip?dl=0
 
 SSRS.
 SSIS.
+P.INFO
+--------------------
+check all the db in db
+sp_databases
+----------------------------------
+check all the table from db
+select * from information_schema.tables
+--------------------------------------
+For using any db
+use db
+-----------------------
+
