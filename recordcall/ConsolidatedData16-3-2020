@@ -1,0 +1,69 @@
+ use[Consolidated]
+ 
+ 
+ --Start Consolidated_Closed$ and Consolidated_month2019 find the data using month--
+ select distinct t1.[Months],t1.ServiceRequest_Id,t1.[Card Embossed Name],t1.[Card Type],t1.Location,t1.Origin,t1.[Sub Category],
+  t1.[Sub Sub Category],t1.[Status Code],t1.[Assigned To],t1.[Created On],t1.[Internal Due date],t1.[Due date],
+  t1.[Previous Status Code],t1.[Creator Department],t1.[Owner],t1.[Last Modified By],t1.[Service Requests Type],
+  t1.[Reassigned Reason],t1.[Rejected Reason],t1.[Resolved On],t1.[Department Assigned to],t1.[Closed Within/Outside TAT],
+  t1.[Closure Date and Time],t1.[Original Creator],t1.[Source],t1.[Customer TAT],t1.[Login Date],t1.[Closure Date],
+  t1.[System TAT],t1.[Working days],t1.[Overdue days],t1.[Within/Beyond TAT],t1.[Card type1],t1.[BFL/RBL],t1.[RCA],
+  t1.[FTR/FTNR],t1.[Staff/Insignia],t1.[CRI_VOC],t1.[CRI_VOC_Reason],t1.[RBI_BO/ SME],t1.[FTNR Reason],
+  t1.[Complaint categorization],t1.[Fulfilment Unit],t1.[Escalation Categories],t1.[Vanadna_Categorization],
+  t1.[Name of Regulatory Authority],t1.[L1/L2/L3],t1.[Owner Function]
+,ak.Comments,ak.Closure_Comments,ak.Resolved_Comments,ak.[REASSIGN_COMMENTS],ak.[REASSIGN_REASON],ak.[REJECTED_COMMENTS],ak.[REJECTED_REASON],ak.[REOPEN_COMMENTS],ak.[REOPEN_REASON] from 
+(select * from Consolidated_Closed$) t1 left join
+(select * from Consolidated_month2019)ak 
+on t1.ServiceRequest_Id=ak.ServiceRequest_Id where Months='Jun_19' 
+ --End Consolidated_Closed$ and Consolidated_month2019 find the data using month----
+
+
+
+ --Start Consolidated_Closed$ and Consolidated_month2019 find the data using month--
+ select distinct t1.[Months],t1.ServiceRequest_Id,
+ ak.Comments,ak.Closure_Comments,ak.Resolved_Comments,ak.[REASSIGN_COMMENTS],ak.[REASSIGN_REASON],ak.[REJECTED_COMMENTS],ak.[REJECTED_REASON],ak.[REOPEN_COMMENTS],ak.[REOPEN_REASON] from 
+(select * from Consolidated_Closed2019$) t1 left join
+(select * from Consolidated_month2019)ak 
+on t1.ServiceRequest_Id=ak.ServiceRequest_Id where Months='Jun_19' 
+ --End Consolidated_Closed$ and Consolidated_month2019 find the data using month----
+
+ select * from Consolidated_Closed2019$
+ select * from Consolidated_month2019
+
+  select * from Consolidated_Closed2019$
+ select * from C_RequestClosed_FY_2017_18$
+
+ 
+ select * from Consolidated_Closed2019$
+ select Distinct [Months],count([Card Type]) As Card1 from Consolidated_Closed2019$ group by [Months]
+
+ select Distinct [Months],[Sub sub category],COUNT([Sub sub category]) as Count1,COUNT([Within/Beyond TAT])as TAT, COUNT ([FTR/FTNR])as FTR_FTNR from Consolidated_Closed2019$  group by [Months] order by[Months],[Sub sub category]
+ select Distinct [Months],[Sub sub category] from Consolidated_Closed2019$ group by [Months] order by [Months]
+
+ select Distinct [Months],[Sub sub category],COUNT([Sub sub category]) as [Sub sub category],COUNT([Within/Beyond TAT])as TAT, COUNT ([FTR/FTNR])as FTR_FTNR from Consolidated_Closed2019$  group by [Sub sub category], [Months]
+  
+ select Distinct [Months],[Within/Beyond TAT],count([Within/Beyond TAT]) as [Within/Beyond TAT],
+  [FTR/FTNR],count([FTR/FTNR]) as [FTR/FTNR] from Consolidated_Closed2019$ group by [Months],[Within/Beyond TAT]
+
+  select Distinct [Months], COUNT([Within/Beyond TAT])as TAT, count([FTR/FTNR]) as [FTR/FTNR] from Consolidated_Closed2019$ where [Within/Beyond TAT]= 'Beyond TAT' group by [Months]
+  select Distinct [Months], COUNT([Within/Beyond TAT])as TAT, count([FTR/FTNR]) as [FTR/FTNR] from Consolidated_Closed2019$ where [Within/Beyond TAT]= 'Within TAT' group by [Months]
+
+
+  create view Calculate as Select [Months],[Sub sub category],[Within/Beyond TAT],[FTR/FTNR] from Consolidated_Closed2019$
+  select * from Calculate
+  select Distinct [Months],[Sub sub category], count([Sub sub category]) as T1, Count([Within/Beyond TAT]) as WithinTAT, COUNT ([FTR/FTNR]) as FTNR from Calculate where [Within/Beyond TAT]='Within TAT' and [FTR/FTNR]='FTNR' group by [Sub sub category]
+  select [Months],count([Sub sub category]) as [Sub sub category], Count([Within/Beyond TAT]) as WithinTAT, COUNT ([FTR/FTNR]) as FTNR from Calculate  group by [Months]
+  
+  select Distinct Months,[Sub sub category], Count([Sub sub category]) As Subsubcategory,[Within/Beyond TAT],Count([Within/Beyond TAT])as Tat,[FTR/FTNR],COUNT([FTR/FTNR]) AS FTRNR from Calculate  group by [Sub sub category], Months,[Within/Beyond TAT],[FTR/FTNR]
+  Select Distinct Months, [Sub sub category],count([Sub sub category]) as T1 from Calculate where Months='Apr_19' group by [Sub sub category],Months
+  
+  select * from Consolidated_Closed2019$ where [Service Requests Type]='Complaint'
+  select * from Consolidated_Closed2019$ where Months='MAy_19'
+
+  select * from EMPLOYEES E where E.ID IN (select s.SalesPersonID from Sales s);
+  
+  select * from Consolidated_Closed2019$ where ServiceRequest_Id in (select s.ServiceRequest_Id from Consolidated_month2019 s )
+  
+  select distinct t1.months,t1.ServiceRequest_Id,t2.ServiceRequest_Id from
+  (select * from Consolidated_Closed2019$) t1 inner join
+  (select * from Consolidated_month2019) t2 on t1.ServiceRequest_Id= t2.ServiceRequest_Id
