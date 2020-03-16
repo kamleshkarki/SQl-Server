@@ -41,6 +41,6 @@ check all the table from db
 select * from information_schema.tables
 --------------------------------------
 For using any db
-use db
+use dbName
 -----------------------
 
